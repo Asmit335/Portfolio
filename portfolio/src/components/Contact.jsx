@@ -1,6 +1,6 @@
-// components/Contact.jsx
 import React, { useState } from 'react'
 import { Send, Mail, Phone, MapPin } from 'lucide-react'
+import { useForm, ValidationError } from '@formspree/react'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,11 +9,7 @@ const Contact = () => {
     message: ''
   })
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
-    // Add your form submission logic here
-  }
+  const [state, handleSubmit] = useForm("xvgevkpj");
 
   const handleChange = (e) => {
     setFormData({
@@ -35,6 +31,7 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          
           {/* Contact Info */}
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
@@ -74,63 +71,81 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-                  placeholder="John Doe"
-                  required
-                />
-              </div>
+            {state.succeeded ? (
+              <p className="text-green-600 text-lg font-semibold">
+                🎉 Your message has been sent successfully!
+              </p>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                
+                {/* Name */}
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg 
+                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-                  placeholder="john@example.com"
-                  required
-                />
-              </div>
+                {/* Email */}
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg 
+                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                    placeholder="john@example.com"
+                    required
+                  />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} />
+                </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows="4"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition resize-none"
-                  placeholder="Tell me about your project..."
-                  required
-                ></textarea>
-              </div>
+                {/* Message */}
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Your Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows="4"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg 
+                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition resize-none"
+                    placeholder="Tell me about your project..."
+                    required
+                  ></textarea>
+                  <ValidationError prefix="Message" field="message" errors={state.errors} />
+                </div>
 
-              <button
-                type="submit"
-                className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
-              >
-                Send Message
-                <Send size={20} />
-              </button>
-            </form>
+                {/* Button */}
+                <button
+                  type="submit"
+                  disabled={state.submitting}
+                  className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 
+                  rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                >
+                  {state.submitting ? "Sending..." : "Send Message"}
+                  <Send size={20} />
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
