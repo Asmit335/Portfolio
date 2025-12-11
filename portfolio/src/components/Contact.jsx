@@ -23,7 +23,7 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="py-16 bg-white">
+    <section id="contact" className="py-16 bg-white ml-8">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -46,7 +46,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Email</h4>
-                  <p className="text-gray-600">your.email@example.com</p>
+                  <p className="text-gray-600">asmitkhanal467@gmail.com</p>
                 </div>
               </div>
 
@@ -56,7 +56,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Phone</h4>
-                  <p className="text-gray-600">+1 (123) 456-7890</p>
+                  <p className="text-gray-600">+97798085587</p>
                 </div>
               </div>
 
@@ -66,7 +66,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Location</h4>
-                  <p className="text-gray-600">City, Country</p>
+                  <p className="text-gray-600">Nepal</p>
                 </div>
               </div>
             </div>

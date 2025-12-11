@@ -25,7 +25,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="flex items-center justify-center gap-2">
-            © {currentYear} Made with <Heart size={16} className="text-red-500" /> by Your Name
+            © {currentYear} Made with <Heart size={16} className="text-red-500" /> by Asmit Khanal
           </p>
         </div>
       </div>

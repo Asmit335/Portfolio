@@ -12,7 +12,7 @@ const About = () => {
     {
       year: "2021 - 2023",
       role: "Full Stack Developer",
-      company: "StartupXYZ",
+      company: "GEEKBIND",
       description: "Built scalable web applications with React and Node.js"
     },
     {
@@ -30,7 +30,7 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="py-16 bg-white">
+    <section id="about" className="py-16 m-4 bg-white">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Image & Stats */}
@@ -40,8 +40,9 @@ const About = () => {
                 <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 p-1">
                   <div className="w-full h-full bg-gray-100 rounded-2xl flex items-center justify-center">
                     <div className="text-center p-8">
+                      {/* <img src="https://www.asmitkhanal.com.np/images/profile-1.jpeg" className=' w-full h-full object-cover' alt="asmitPic" /> */}
                       <User size={120} className="mx-auto text-blue-600 mb-4" />
-                      <div className="text-3xl font-bold text-gray-900">Your Name</div>
+                      <div className="text-3xl font-bold text-gray-900">Asmit Khanal</div>
                       <div className="text-gray-600 mt-2">Full Stack Developer</div>
                     </div>
                   </div>
